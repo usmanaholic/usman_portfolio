@@ -4,12 +4,21 @@ import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, GitlabIcon as GitHub, Linkedin, Mail } from "lucide-react"
 import Link from "next/link"
-import { useCallback } from "react"
+import { useCallback, useEffect, useState } from "react"
 import Particles from "react-tsparticles"
 import { loadSlim } from "tsparticles-slim"
 import type { Engine } from "tsparticles-engine"
 
 export default function Hero() {
+  const [isMobile, setIsMobile] = useState(false)
+  
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
   const particlesInit = useCallback(async (engine: Engine) => {
     await loadSlim(engine)
   }, [])
@@ -23,7 +32,7 @@ export default function Hero() {
           background: { color: { value: "transparent" } },
           particles: {
             number: {
-              value: 80,
+              value: isMobile ? 40 : 80,
               density: { enable: true, value_area: 800 }
             },
             color: { value: "#ffffff" },
@@ -59,30 +68,29 @@ export default function Hero() {
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ duration: 2 }}
-        className="absolute -top-32 -left-64 w-96 h-96 bg-gradient-to-r from-primary/40 to-purple-500/40 rounded-full blur-3xl opacity-50 animate-float"
+        className="absolute -top-32 -left-64 w-64 h-64 md:w-96 md:h-96 bg-gradient-to-r from-primary/40 to-purple-500/40 rounded-full blur-3xl opacity-50 animate-float"
       />
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         transition={{ duration: 2, delay: 0.5 }}
-        className="absolute -bottom-32 -right-64 w-96 h-96 bg-gradient-to-r from-secondary/40 to-pink-500/40 rounded-full blur-3xl opacity-50 animate-float-delayed"
+        className="absolute -bottom-32 -right-64 w-64 h-64 md:w-96 md:h-96 bg-gradient-to-r from-secondary/40 to-pink-500/40 rounded-full blur-3xl opacity-50 animate-float-delayed"
       />
 
       {/* Content Container */}
-      <div className="container mx-auto flex items-center h-full px-4 z-10 relative">
+      <div className="container mx-auto flex flex-col md:flex-row items-center h-full px-4 z-10 relative pt-20 md:pt-0">
         {/* Left Content */}
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2 text-center md:text-left mb-12 md:mb-0">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-left"
           >
             <motion.h1
               initial={{ scale: 0.5 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="text-5xl md:text-7xl font-bold mb-4 text-white"
+              className="text-4xl md:text-5xl lg:text-7xl font-bold mb-4 text-white px-4 md:px-0"
             >
               Hi, I'm{" "}
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
@@ -93,7 +101,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="text-xl md:text-2xl mb-8 text-gray-200"
+              className="text-lg md:text-xl lg:text-2xl mb-8 text-gray-200 px-4 md:px-0"
             >
               Web Developer | React & Django Specialist | Machine Learning Enthusiast
             </motion.p>
@@ -104,19 +112,19 @@ export default function Hero() {
               className="space-y-4"
             >
               <Link href="https://github.com/usmanaholic" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" className="btn-glow group bg-transparent hover:bg-transparent text-white">
-                View My Work
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
+                <Button size="lg" className="btn-glow group bg-transparent hover:bg-transparent text-white">
+                  View My Work
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
               </Link>
-              <div className="flex space-x-4 mt-4">
+              <div className="flex justify-center md:justify-start space-x-4 mt-4">
                 <Link href="https://github.com/usmanaholic" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="icon" className="btn-glow bg-transparent hover:bg-transparent text-white">
                     <GitHub className="h-5 w-5" />
                     <span className="sr-only">GitHub</span>
                   </Button>
                 </Link>
-                <Link href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">
+                <Link href="https://www.linkedin.com/in/muhammad-usman-225896212/" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="icon" className="btn-glow bg-transparent hover:bg-transparent text-white">
                     <Linkedin className="h-5 w-5" />
                     <span className="sr-only">LinkedIn</span>
@@ -134,12 +142,12 @@ export default function Hero() {
         </div>
 
         {/* Right Content - Coding Animation Block */}
-        <div className="w-1/2 flex justify-end">
+        <div className="w-full md:w-1/2 flex justify-center md:justify-end">
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="relative w-full max-w-xl p-8 bg-black/50 rounded-lg border border-primary/30 shadow-xl backdrop-blur-sm"
+            className="relative w-full max-w-md lg:max-w-xl p-4 md:p-8 bg-black/50 rounded-lg border border-primary/30 shadow-xl backdrop-blur-sm mx-4 md:mx-0"
           >
             {/* Terminal Window Decorations */}
             <div className="flex space-x-2 mb-4">
@@ -149,7 +157,7 @@ export default function Hero() {
             </div>
 
             {/* Animated Code Block */}
-            <div className="font-mono text-sm space-y-4">
+            <div className="font-mono text-xs sm:text-sm space-y-4">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -194,7 +202,7 @@ export default function Hero() {
 
             {/* Animated Cursor */}
             <motion.div
-              className="absolute bottom-8 right-8 h-4 w-0.5 bg-green-400"
+              className="absolute bottom-4 right-4 md:bottom-8 md:right-8 h-4 w-0.5 bg-green-400"
               animate={{ opacity: [0, 1, 0] }}
               transition={{ repeat: Infinity, duration: 1.5 }}
             />
