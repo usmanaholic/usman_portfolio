@@ -53,7 +53,7 @@ export default function About() {
               expanding my knowledge in machine learning and data structures.
             </p>
             <a href="https://tqu0ji92zyq2wxex.public.blob.vercel-storage.com/usman_resume-g0bOnYh2YzHcnHAWqPSALU5vCwWhrJ.pdf" download
-            download="Muhammad_Usman_CV.pdf" target="_blank" rel="noopener noreferrer">
+            download="Muhammad_Usman_CV.pdf" target="_blank" >
             <Button className="btn-glow group bg-transparent hover:bg-transparent text-white">
               Download CV
               <Download className="ml-2 group-hover:translate-y-1 transition-transform" />
