@@ -52,7 +52,7 @@ export default function About() {
               When I'm not coding, you can find me working on personal projects, contributing to open-source, or
               expanding my knowledge in machine learning and data structures.
             </p>
-            <a href="https://tqu0ji92zyq2wxex.public.blob.vercel-storage.com/usman_resume-g0bOnYh2YzHcnHAWqPSALU5vCwWhrJ.pdf" download
+            <a href="https://tqu0ji92zyq2wxex.public.blob.vercel-storage.com/usman_resume-g0bOnYh2YzHcnHAWqPSALU5vCwWhrJ.pdf" 
             download="Muhammad_Usman_CV.pdf" target="_blank" >
             <Button className="btn-glow group bg-transparent hover:bg-transparent text-white">
               Download CV
