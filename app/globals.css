@@ -3,25 +3,130 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: 210 100% 50%; /* Bright blue */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 280 100% 50%; /* Vibrant purple */
+  --secondary-foreground: 0 0% 100%;
+  --accent: 150 100% 50%; /* Neon green */
+  --accent-foreground: 0 0% 0%;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.dark {
+  --primary: 210 100% 60%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 280 100% 60%;
+  --secondary-foreground: 0 0% 100%;
+  --accent: 150 100% 60%;
+  --accent-foreground: 0 0% 0%;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* Enhanced glow button effect */
+.btn-glow {
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  border: none !important;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.btn-glow::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-color: hsl(var(--primary));
+  background-repeat: no-repeat;
+  background-size: 50% 50%, 50% 50%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  background-image: linear-gradient(hsl(var(--primary)), hsl(var(--primary))),
+    linear-gradient(hsl(var(--secondary)), hsl(var(--secondary))),
+    linear-gradient(hsl(var(--accent)), hsl(var(--accent))), linear-gradient(hsl(var(--primary)), hsl(var(--primary)));
+  animation: rotate 4s linear infinite;
+}
+
+.btn-glow::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 3px;
+  top: 3px;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
   }
+}
+
+/* Animated underline effect for links */
+.link-underline {
+  position: relative;
+  color: white;
+}
+
+.link-underline::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--secondary)));
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+@keyframes gradient-pulse {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.4; }
+  100% { opacity: 0.2; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.animate-gradient-xy {
+  animation: gradient-pulse 12s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 8s linear infinite;
+  background-size: 1000px 100%;
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 8s ease-in-out infinite 2s;
+}
+
+.animate-grid-pulse {
+  animation: gradient-pulse 5s ease-in-out infinite;
 }
