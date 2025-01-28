@@ -103,10 +103,12 @@ export default function Hero() {
               transition={{ delay: 1, duration: 0.5 }}
               className="space-y-4"
             >
+              <Link href="https://github.com/usmanaholic" target="_blank" rel="noopener noreferrer">
               <Button size="lg" className="btn-glow group bg-transparent hover:bg-transparent text-white">
                 View My Work
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
+              </Link>
               <div className="flex space-x-4 mt-4">
                 <Link href="https://github.com/usmanaholic" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="icon" className="btn-glow bg-transparent hover:bg-transparent text-white">

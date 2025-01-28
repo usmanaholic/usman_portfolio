@@ -15,8 +15,8 @@ const projects = [
       "A pixel-perfect Next.js clone of the Wildwonder website, featuring responsive design and optimized performance.",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/linkden.PNG-w2FrpvOXgmnNStjxDvmuWOPSjKrNtc.png",
     tags: ["Next.js", "React", "Responsive Design"],
-    liveUrl: "https://wildwonder-clone.vercel.app/",
-    githubUrl: "https://github.com/usmanaholic/wildwonder-clone",
+    liveUrl: "https://wildwonder-nine.vercel.app/",
+    githubUrl: "https://github.com/usmanaholic/wildwonder",
   },
   {
     title: "Trick Storee",
@@ -24,7 +24,7 @@ const projects = [
       "An e-commerce store built with Django, featuring product filtering, dynamic search, and a cookie-based cart system with payment integration.",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/homepage.PNG-DnzV8GRBtjmHczO4LxWc81QO4b3sZK.png",
     tags: ["Django", "Python", "E-commerce", "Payment Integration"],
-    githubUrl: "https://github.com/usmanaholic/trick-storee",
+    githubUrl: "https://github.com/usmanaholic/trickstoree",
   },
   {
     title: "Community Platform",
@@ -32,7 +32,7 @@ const projects = [
     image:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/pexels-jeswin-3380743.jpg-Zj1yF8pbFQoRlo1uFdHEDZUKR1VDfJ.jpeg",
     tags: ["Django", "React", "Community", "Collaboration"],
-    githubUrl: "https://github.com/usmanaholic/community-platform",
+    githubUrl: "",
   },
 ]
 
