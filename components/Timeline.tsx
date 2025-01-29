@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 const experiences = [
   {
     title: "Web Developer",
-    company: "College of Admission Test (CAT)",
+    company: "CAT",
     location: "Multan",
     period: "2021 - Present",
     description:
